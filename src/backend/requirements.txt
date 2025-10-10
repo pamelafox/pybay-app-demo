@@ -246,7 +246,7 @@ packaging==25.0
     #   opentelemetry-instrumentation
     #   opentelemetry-instrumentation-flask
     #   opentelemetry-instrumentation-sqlalchemy
-pgvector==0.3.6
+pgvector==0.4.1
     # via fastapi-app (pyproject.toml)
 propcache==0.3.2
     # via
