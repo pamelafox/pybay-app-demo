@@ -15,7 +15,7 @@ anyio==4.9.0
     #   openai
     #   sse-starlette
     #   starlette
-asgiref==3.9.1
+asgiref==3.10.0
     # via opentelemetry-instrumentation-asgi
 async-timeout==5.0.1
     # via
