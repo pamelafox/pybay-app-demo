@@ -1,10 +1,39 @@
 # Instructions for coding agents
 
-## Adding new azd environment variables
+* Do not add comments indicating something you have removed, simply remove it and be done with it.
+* Similarly, do not add comments indicating something you have changed; just make the change.
+* If you are asked to copy a file, do a file copy and delete the old file.
 
-An azd environment variable is stored by the azd CLI for each environment. It is passed to the "azd up" command and can configure both provisioning options and application settings.
-When adding new azd environment variables, update:
+## Python conventions
 
-1. infra/main.parameters.json : Add the new parameter with a Bicep-friendly variable name and map to the new environment variable
-1. infra/main.bicep: Add the new Bicep parameter at the top, and add it to the `webAppEnv` object
-1. .github/workflows/azure-dev.yml: Add the new environment variable under `env` section. If it's a @secure variable in main.bicep, it should come from `secrets`, otherwise from `vars`.
+* All imports go at the TOP of the file, do NOT import inside functions or if statements.
+* Do NOT use excessive try/catch statements, only use try/catch when explicitly requested. Most exceptions should propagate and become runtime errors.
+* Use type annotations only for function definitions, do NOT use for variables or attributes.
+* Do NOT add "pragma: no cover" or similar coverage-ignore comments, unless explicitly requested.
+
+## Adding new dependencies
+
+* Add the new dependency to the `[project.dependencies]` list in `pyproject.toml`.
+* Navigate to src/backend and run:
+
+    uv pip compile pyproject.toml -o requirements.txt
+
+* Install the new dependencies:
+
+    pip install -r requirements-dev.txt
+
+## Running the server
+
+Run in reload mode:
+
+python -m uvicorn fastapi_app:create_app --factory --reload
+
+## Running tests
+
+Install the dev requirements:
+
+pip install -r requirements-dev.txt
+
+Then run the tests with:
+
+python -m pytest

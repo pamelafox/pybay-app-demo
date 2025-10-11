@@ -9,8 +9,7 @@ playwright
 pytest
 pytest-asyncio
 pytest-cov
-pytest-playwright
 pytest-snapshot
 locust
-psycopg2
 dotenv-azd
+httpx

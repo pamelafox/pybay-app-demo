@@ -334,10 +334,6 @@ var webAppEnv = union(azureOpenAIKeyEnv, openAIComKeyEnv, [
     value: 'require'
   }
   {
-    name: 'RUNNING_IN_PRODUCTION'
-    value: 'true'
-  }
-  {
     name: 'APPLICATIONINSIGHTS_CONNECTION_STRING'
     value: monitoring.outputs.applicationInsightsConnectionString
   }

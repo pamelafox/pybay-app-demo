@@ -1,68 +1,147 @@
+"""SQLAlchemy ORM models for biodiversity observations & species phenology.
+
+These reflect the minimal schema described in `ingestion.md`:
+* `observations` - raw (filtered) iNaturalist observation records with a geography point.
+* `species` - per‑taxon aggregated phenology metrics and precomputed arrays.
+
+The models intentionally avoid premature indices / constraints beyond PK + obvious FKs.
+Spatial queries rely on PostGIS via geoalchemy2's Geography type.
+"""
+
 from __future__ import annotations
 
-from pgvector.sqlalchemy import Vector
-from sqlalchemy import Index
+from geoalchemy2 import Geography
+from sqlalchemy import (
+    ARRAY,
+    BigInteger,
+    Boolean,
+    Date,
+    ForeignKey,
+    Integer,
+    Numeric,
+    SmallInteger,
+    String,
+    Text,
+    UniqueConstraint,
+    func,
+)
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
-# Define the models
 class Base(DeclarativeBase):
-    pass
+    """Base declarative class."""
 
 
-class Item(Base):
-    __tablename__ = "items"
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    type: Mapped[str] = mapped_column()
-    brand: Mapped[str] = mapped_column()
-    name: Mapped[str] = mapped_column()
-    description: Mapped[str] = mapped_column()
-    price: Mapped[float] = mapped_column()
-    # Embeddings for different models:
-    embedding_3l: Mapped[Vector] = mapped_column(Vector(1024), nullable=True)  # text-embedding-3-large
-    embedding_nomic: Mapped[Vector] = mapped_column(Vector(768), nullable=True)  # nomic-embed-text
+class Observation(Base):
+    """Filtered bee observation row.
 
-    def to_dict(self, include_embedding: bool = False):
-        model_dict = {column.name: getattr(self, column.name) for column in self.__table__.columns}
-        if include_embedding:
-            model_dict["embedding_3l"] = model_dict.get("embedding_3l", [])
-            model_dict["embedding_nomic"] = model_dict.get("embedding_nomic", [])
-        else:
-            del model_dict["embedding_3l"]
-            del model_dict["embedding_nomic"]
-        return model_dict
+    Only the columns required for phenology + simple spatial presence queries are retained.
+    Coordinates are stored twice: (latitude/longitude) for convenience and a Geography(Point,4326)
+    column (`geom`) for efficient ST_DWithin radius filtering.
+    """
 
-    def to_str_for_rag(self):
-        return f"Name:{self.name} Description:{self.description} Price:{self.price} Brand:{self.brand} Type:{self.type}"
+    __tablename__ = "observations"
 
-    def to_str_for_embedding(self):
-        return f"Name: {self.name} Description: {self.description} Type: {self.type}"
+    observation_id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    taxon_id: Mapped[int] = mapped_column(BigInteger, ForeignKey("species.taxon_id", ondelete="CASCADE"), index=True)
+
+    observed_date: Mapped[str] = mapped_column(Date, nullable=False)
+    observed_year: Mapped[int] = mapped_column(SmallInteger, nullable=False)
+    observed_month: Mapped[int] = mapped_column(SmallInteger, nullable=False)
+
+    latitude: Mapped[float | None] = mapped_column(nullable=True)
+    longitude: Mapped[float | None] = mapped_column(nullable=True)
+    geom: Mapped[object | None] = mapped_column(Geography(geometry_type="POINT", srid=4326), nullable=True)
+
+    coordinates_obscured: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    positional_accuracy: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    quality_grade: Mapped[str] = mapped_column(String, nullable=False)
+    license: Mapped[str | None] = mapped_column(String, nullable=True)
+    county: Mapped[str | None] = mapped_column(String, nullable=True)
+    captive_cultivated: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
 
 
-"""
-**Define HNSW index to support vector similarity search**
+class Species(Base):
+    """Per‑taxon phenology aggregates.
 
-We use the vector_cosine_ops access method (cosine distance)
- since it works for both normalized and non-normalized vector embeddings
-If you know your embeddings are normalized,
- you can switch to inner product for potentially better performance.
-The index operator should match the operator used in queries.
-"""
+    Arrays:
+    * phenology_counts: integer counts for months Jan..Dec (index 0 => Jan)
+    * phenology_normalized: floating (numeric) normalized values summing to 1 (unless insufficient data)
+    """
 
-table_name = Item.__tablename__
+    __tablename__ = "species"
 
-index_3l = Index(
-    f"hnsw_index_for_cosine_{table_name}_embedding_3l",
-    Item.embedding_3l,
-    postgresql_using="hnsw",
-    postgresql_with={"m": 16, "ef_construction": 64},
-    postgresql_ops={"embedding_3l": "vector_cosine_ops"},
-)
+    taxon_id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    scientific_name: Mapped[str] = mapped_column(String, nullable=False)
+    common_name: Mapped[str | None] = mapped_column(String, nullable=True)
+    family: Mapped[str | None] = mapped_column(String, nullable=True)
+    subfamily: Mapped[str | None] = mapped_column(String, nullable=True)
+    tribe: Mapped[str | None] = mapped_column(String, nullable=True)
+    genus: Mapped[str | None] = mapped_column(String, nullable=True)
+    species_epithet: Mapped[str | None] = mapped_column(String, nullable=True)
+    rank: Mapped[str | None] = mapped_column(String, nullable=True)
 
-index_nomic = Index(
-    f"hnsw_index_for_cosine_{table_name}_embedding_nomic",
-    Item.embedding_nomic,
-    postgresql_using="hnsw",
-    postgresql_with={"m": 16, "ef_construction": 64},
-    postgresql_ops={"embedding_nomic": "vector_cosine_ops"},
-)
+    # Research‑grade phenology (existing semantics maintained)
+    total_observations: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    phenology_counts: Mapped[list[int] | None] = mapped_column(ARRAY(Integer), nullable=True)
+    phenology_normalized: Mapped[list[float] | None] = mapped_column(ARRAY(Numeric), nullable=True)
+    peak_month: Mapped[int | None] = mapped_column(SmallInteger, nullable=True)
+    window_start: Mapped[int | None] = mapped_column(SmallInteger, nullable=True)
+    window_end: Mapped[int | None] = mapped_column(SmallInteger, nullable=True)
+    seasonality_index: Mapped[float | None] = mapped_column(Numeric, nullable=True)
+    insufficient_data: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    peak_prominence: Mapped[float | None] = mapped_column(Numeric, nullable=True)
+
+    # All‑observations phenology (includes non‑research quality) — Option 2 addition
+    total_observations_all: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    phenology_counts_all: Mapped[list[int] | None] = mapped_column(ARRAY(Integer), nullable=True)
+    phenology_normalized_all: Mapped[list[float] | None] = mapped_column(ARRAY(Numeric), nullable=True)
+    peak_month_all: Mapped[int | None] = mapped_column(SmallInteger, nullable=True)
+    window_start_all: Mapped[int | None] = mapped_column(SmallInteger, nullable=True)
+    window_end_all: Mapped[int | None] = mapped_column(SmallInteger, nullable=True)
+    seasonality_index_all: Mapped[float | None] = mapped_column(Numeric, nullable=True)
+    insufficient_data_all: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    peak_prominence_all: Mapped[float | None] = mapped_column(Numeric, nullable=True)
+
+    # For ordering tie-break convenience; create an index if needed later.
+    __table_args__ = ()
+
+
+class Trip(Base):
+    """User submitted bee watching / survey trip.
+
+    Stored to demonstrate validation, normalization and retrieval patterns. Some
+    fields (organizers, address lines, emails) are modeled as JSON/array blobs for
+    simplicity; a real system might further normalize them.
+    """
+
+    __tablename__ = "trips"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+
+    event_name: Mapped[str] = mapped_column(String(300), nullable=False)
+    event_slug: Mapped[str] = mapped_column(String(320), nullable=False, index=True)
+
+    start_time: Mapped[str] = mapped_column(Date, nullable=False)
+    end_time: Mapped[str] = mapped_column(Date, nullable=False)
+
+    approx_latitude: Mapped[float | None] = mapped_column(Numeric(8, 5), nullable=True)
+    approx_longitude: Mapped[float | None] = mapped_column(Numeric(8, 5), nullable=True)
+    positional_accuracy_m: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
+    # JSONB organizers: list[{original, normalized, has_diacritics, role}]
+    organizers: Mapped[list | None] = mapped_column(JSONB, nullable=True)
+    # Address lines stored as JSON array of strings
+    address_lines: Mapped[list[str] | None] = mapped_column(ARRAY(String), nullable=True)
+    country: Mapped[str | None] = mapped_column(String(2), nullable=True)
+
+    contact_emails: Mapped[list[str] | None] = mapped_column(ARRAY(String), nullable=True)
+
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    notes_sanitized: Mapped[str | None] = mapped_column(Text, nullable=True)
+    warnings: Mapped[list[str] | None] = mapped_column(ARRAY(String), nullable=True)
+
+    created_at: Mapped[str] = mapped_column(Date, nullable=False, server_default=func.now())
+
+    __table_args__ = (UniqueConstraint("event_slug", name="uq_trips_event_slug"),)

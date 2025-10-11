@@ -1,127 +1,97 @@
-from enum import Enum
-from typing import Any, Optional
+from pydantic import BaseModel
 
-from openai.types.responses import ResponseInputItemParam
-from pydantic import BaseModel, Field
+# ---------------- Bee Activity Models -----------------
 
 
-class AIChatRoles(str, Enum):
-    USER = "user"
-    ASSISTANT = "assistant"
-    SYSTEM = "system"
+class ActiveBeeItem(BaseModel):
+    taxon_id: int
+    scientific_name: str
+    common_name: str | None = None
+    activity_score: float
+    peak_month: int | None = None
 
 
-class Message(BaseModel):
-    content: str
-    role: AIChatRoles = AIChatRoles.USER
+class ActiveBeesResponse(BaseModel):
+    data: list[ActiveBeeItem]
+    meta: dict | None = None
 
 
-class RetrievalMode(str, Enum):
-    TEXT = "text"
-    VECTORS = "vectors"
-    HYBRID = "hybrid"
+# ---------------- Trip Models -----------------
 
 
-class ChatRequestOverrides(BaseModel):
-    top: int = 3
-    temperature: float = 0.3
-    retrieval_mode: RetrievalMode = RetrievalMode.HYBRID
-    use_advanced_flow: bool = True
-    prompt_template: Optional[str] = None
-    seed: Optional[int] = None
+class TripOrganizer(BaseModel):
+    original: str
+    normalized: str
+    has_diacritics: bool
+    role: str | None = None
 
 
-class ChatRequestContext(BaseModel):
-    overrides: ChatRequestOverrides
+class TripLocation(BaseModel):
+    approx_latitude: float | None = None
+    approx_longitude: float | None = None
+    positional_accuracy_m: int | None = None
 
 
-class ChatRequest(BaseModel):
-    messages: list[ResponseInputItemParam]
-    context: ChatRequestContext
-    sessionState: Optional[Any] = None
+class TripTimeWindow(BaseModel):
+    start_time: str
+    end_time: str
+    duration_hours: float | None = None
 
 
-class ItemPublic(BaseModel):
+class TripCreate(BaseModel):
+    event_name: str
+    organizers: list[dict]
+    address_text: str | None = None
+    country_hint: str | None = None
+    start_time: str
+    end_time: str
+    approx_latitude: float | None = None
+    approx_longitude: float | None = None
+    positional_accuracy_m: int | None = None
+    contact_emails: list[str] | None = None
+    notes: str | None = None
+
+
+class TripPublic(BaseModel):
     id: int
-    type: str
-    brand: str
-    name: str
-    description: str
-    price: float
-
-    def to_str_for_rag(self):
-        return f"Name:{self.name} Description:{self.description} Price:{self.price} Brand:{self.brand} Type:{self.type}"
-
-
-class ItemWithDistance(ItemPublic):
-    distance: float
-
-    def __init__(self, **data):
-        super().__init__(**data)
-        self.distance = round(self.distance, 2)
+    event_slug: str
+    event_name: str
+    time_window: TripTimeWindow
+    location: TripLocation
+    organizers: list[TripOrganizer]
+    address: dict | None = None
+    notes_sanitized: str | None = None
+    warnings: list[str] | None = None
+    created_at: str | None = None
 
 
-class ThoughtStep(BaseModel):
-    title: str
-    description: Any
-    props: dict = {}
+class TripListItem(BaseModel):
+    id: int
+    event_name: str
+    start_time: str
 
 
-class RAGContext(BaseModel):
-    data_points: dict[int, ItemPublic]
-    thoughts: list[ThoughtStep]
-    followup_questions: Optional[list[str]] = None
+class TripListResponse(BaseModel):
+    meta: dict
+    data: list[TripListItem]
 
 
-class ErrorResponse(BaseModel):
-    error: str
+# --------------- Species Search Models ---------------
 
 
-class RetrievalResponse(BaseModel):
-    message: Message
-    context: RAGContext
-    sessionState: Optional[Any] = None
+class SpeciesSearchItem(BaseModel):
+    taxon_id: int
+    scientific_name: str
+    common_name: str | None = None
+    rank: str | None = None
+    total_observations: int | None = None
+    total_observations_all: int | None = None
+    peak_month: int | None = None
+    peak_month_all: int | None = None
+    score: float | None = None  # text search rank
 
 
-class RetrievalResponseDelta(BaseModel):
-    delta: Optional[Message] = None
-    context: Optional[RAGContext] = None
-    sessionState: Optional[Any] = None
-
-
-class ChatParams(ChatRequestOverrides):
-    prompt_template: str
-    response_token_limit: int = 1024
-    enable_text_search: bool
-    enable_vector_search: bool
-    original_user_query: str
-    past_messages: list[ResponseInputItemParam]
-
-
-class Filter(BaseModel):
-    column: str
-    comparison_operator: str
-    value: Any
-
-
-class PriceFilter(Filter):
-    column: str = Field(default="price", description="The column to filter on (always 'price' for this filter)")
-    comparison_operator: str = Field(description="The operator for price comparison ('>', '<', '>=', '<=', '=')")
-    value: float = Field(description="The price value to compare against (e.g., 30.00)")
-
-
-class BrandFilter(Filter):
-    column: str = Field(default="brand", description="The column to filter on (always 'brand' for this filter)")
-    comparison_operator: str = Field(description="The operator for brand comparison ('=' or '!=')")
-    value: str = Field(description="The brand name to compare against (e.g., 'AirStrider')")
-
-
-class SearchResults(BaseModel):
+class SpeciesSearchResponse(BaseModel):
     query: str
-    """The original search query"""
-
-    items: list[ItemPublic]
-    """List of items that match the search query and filters"""
-
-    filters: list[Filter]
-    """List of filters applied to the search results"""
+    count: int
+    data: list[SpeciesSearchItem]
