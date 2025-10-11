@@ -11,7 +11,7 @@ from fastapi_app.postgres_engine import create_postgres_engine_from_env
 
 # Always use localhost for testing
 POSTGRES_HOST = "localhost"
-POSTGRES_USERNAME = os.getenv("POSTGRES_USERNAME", "postgres")
+POSTGRES_USERNAME = os.getenv("POSTGRES_USERNAME", "admin")
 POSTGRES_DATABASE = os.getenv("POSTGRES_DATABASE", os.getenv("TEST_DB_NAME", "observations_test"))
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "postgres")
 POSTGRES_SSL = "prefer"
@@ -51,14 +51,14 @@ async def app(mock_session_env):
 
 
 @pytest_asyncio.fixture(scope="function")
-async def test_client(app, mock_azure_credential, mock_openai_embedding, mock_openai_chatcompletion):
+async def test_client(app):
     """Create a test client."""
     with TestClient(app) as test_client:
         yield test_client
 
 
 @pytest_asyncio.fixture(scope="function")
-async def db_session(mock_session_env, mock_azure_credential):
+async def db_session(mock_session_env):
     """Create a new database session with a rollback at the end of the test."""
     engine = await create_postgres_engine_from_env()
     async_sesion = async_sessionmaker(autocommit=False, autoflush=False, bind=engine)
