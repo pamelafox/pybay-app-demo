@@ -8,13 +8,11 @@ from sqlalchemy.ext.asyncio import async_sessionmaker
 
 from fastapi_app import create_app
 from fastapi_app.postgres_engine import create_postgres_engine_from_env
-from fastapi_app.setup_postgres_database import create_db_schema
-from tests.mocks import MockAzureCredential
 
 # Always use localhost for testing
 POSTGRES_HOST = "localhost"
-POSTGRES_USERNAME = os.getenv("POSTGRES_USERNAME", "admin")
-POSTGRES_DATABASE = os.getenv("POSTGRES_DATABASE", "postgres")
+POSTGRES_USERNAME = os.getenv("POSTGRES_USERNAME", "postgres")
+POSTGRES_DATABASE = os.getenv("POSTGRES_DATABASE", os.getenv("TEST_DB_NAME", "observations_test"))
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "postgres")
 POSTGRES_SSL = "prefer"
 POSTGRESQL_DATABASE_URL = (
@@ -45,27 +43,11 @@ def mock_session_env(monkeypatch_session):
         yield
 
 
-async def create_and_seed_db():
-    """Create and seed the database."""
-    engine = await create_postgres_engine_from_env()
-    await create_db_schema(engine)
-    await engine.dispose()
-
-
 @pytest_asyncio.fixture(scope="session")
 async def app(mock_session_env):
     """Create a FastAPI app."""
     app = create_app(testing=True)
-    await create_and_seed_db()
     return app
-
-
-@pytest.fixture(scope="function")
-def mock_azure_credential(mock_session_env):
-    """Mock the Azure credential for testing."""
-    with mock.patch("azure.identity.AzureDeveloperCliCredential") as mock_azure_credential:
-        mock_azure_credential.return_value = MockAzureCredential()
-        yield mock_azure_credential
 
 
 @pytest_asyncio.fixture(scope="function")

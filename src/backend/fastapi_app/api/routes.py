@@ -6,7 +6,7 @@ import fastapi
 from fastapi import HTTPException, Query
 from sqlalchemy import select, text
 
-from fastapi_app.api_models import (
+from fastapi_app.api.models import (
     ActiveBeeItem,
     ActiveBeesResponse,
     SpeciesSearchItem,

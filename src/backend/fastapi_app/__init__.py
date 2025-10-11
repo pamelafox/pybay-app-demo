@@ -39,8 +39,8 @@ def create_app(testing: bool = False):
 
     app = fastapi.FastAPI(docs_url="/docs", lifespan=lifespan)
 
-    from fastapi_app.routes import api_routes
+    from fastapi_app.api import routes
 
-    app.include_router(api_routes.router)
+    app.include_router(routes.router)
 
     return app
