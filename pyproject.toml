@@ -20,6 +20,7 @@ ignore_missing_imports = true
 
 [tool.coverage.run]
 source = ["src/backend/fastapi_app/api"]
+concurrency = ["thread", "greenlet"]
 
 [tool.coverage.report]
 show_missing = true
