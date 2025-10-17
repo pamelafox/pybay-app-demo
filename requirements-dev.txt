@@ -13,3 +13,7 @@ pytest-snapshot
 locust
 dotenv-azd
 httpx
+faker
+freezegun
+hypothesis
+schemathesis

@@ -48,7 +48,8 @@ async def create_async_sessionmaker(engine: AsyncEngine) -> async_sessionmaker[A
 async def get_async_sessionmaker(
     request: Request,
 ) -> AsyncGenerator[async_sessionmaker[AsyncSession], None]:
-    yield request.state.sessionmaker
+    # Resource attached in app lifespan on app.state
+    yield request.app.state.sessionmaker  # type: ignore[attr-defined]
 
 
 async def get_async_db_session(

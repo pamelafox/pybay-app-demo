@@ -13,6 +13,8 @@
 
 ## Adding new dependencies
 
+If the dependency is for the application (not for dev or testing):
+
 * Add the new dependency to the `[project.dependencies]` list in `pyproject.toml`.
 * Navigate to src/backend and run:
 
@@ -20,6 +22,12 @@
 
 * Install the new dependencies:
 
+    pip install -r requirements.txt
+
+If the dependency is for development or testing:
+
+* Add the new dependency to requirements-dev.txt
+* Install the new dependencies:
     pip install -r requirements-dev.txt
 
 ## Running the server
