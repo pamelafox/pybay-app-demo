@@ -1,0 +1,197 @@
+{
+  "data": [
+    {
+      "activity_score": 1192.0,
+      "common_name": "Western Honey Bee",
+      "peak_month": 4,
+      "scientific_name": "Apis mellifera",
+      "taxon_id": 47219
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Large Carpenter Bees",
+      "peak_month": 10,
+      "scientific_name": "Xylocopa",
+      "taxon_id": 51111
+    },
+    {
+      "activity_score": 6.0,
+      "common_name": "Bumble Bees",
+      "peak_month": 5,
+      "scientific_name": "Bombus",
+      "taxon_id": 52775
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Agile Longhorn Bee",
+      "peak_month": 9,
+      "scientific_name": "Melissodes agilis",
+      "taxon_id": 52780
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Leafcutter, Mortar, and Resin Bees",
+      "peak_month": 7,
+      "scientific_name": "Megachile",
+      "taxon_id": 52784
+    },
+    {
+      "activity_score": 21.0,
+      "common_name": "Urbane Digger Bee",
+      "peak_month": 7,
+      "scientific_name": "Anthophora urbana",
+      "taxon_id": 57681
+    },
+    {
+      "activity_score": 9.0,
+      "common_name": "Horse-fly Carpenter Bee",
+      "peak_month": 4,
+      "scientific_name": "Xylocopa tabaniformis",
+      "taxon_id": 57686
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Western Carpenter Bee",
+      "peak_month": 5,
+      "scientific_name": "Xylocopa californica",
+      "taxon_id": 57688
+    },
+    {
+      "activity_score": 93.0,
+      "common_name": "Yellow-faced Bumble Bee",
+      "peak_month": 5,
+      "scientific_name": "Bombus vosnesenskii",
+      "taxon_id": 57689
+    },
+    {
+      "activity_score": 66.0,
+      "common_name": "European Woolcarder Bee",
+      "peak_month": 5,
+      "scientific_name": "Anthidium manicatum",
+      "taxon_id": 62453
+    },
+    {
+      "activity_score": 48.0,
+      "common_name": "Foothill Carpenter Bee",
+      "peak_month": 4,
+      "scientific_name": "Xylocopa tabaniformis orpifex",
+      "taxon_id": 70000
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Patchwork Leafcutter Bee",
+      "peak_month": 9,
+      "scientific_name": "Megachile centuncularis",
+      "taxon_id": 124406
+    },
+    {
+      "activity_score": 11.0,
+      "common_name": "California Bumble Bee",
+      "peak_month": 6,
+      "scientific_name": "Bombus californicus",
+      "taxon_id": 124420
+    },
+    {
+      "activity_score": 3.0,
+      "common_name": "Oblong Woolcarder Bee",
+      "peak_month": 5,
+      "scientific_name": "Anthidium oblongatum",
+      "taxon_id": 125792
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Cellophane Bees",
+      "peak_month": 8,
+      "scientific_name": "Colletes",
+      "taxon_id": 127741
+    },
+    {
+      "activity_score": 9.0,
+      "common_name": "Masked Bees",
+      "peak_month": 5,
+      "scientific_name": "Hylaeus",
+      "taxon_id": 127812
+    },
+    {
+      "activity_score": 66.0,
+      "common_name": "Black-tailed Bumble Bee",
+      "peak_month": 4,
+      "scientific_name": "Bombus melanopygus",
+      "taxon_id": 130222
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Red-belted Bumble Bee",
+      "peak_month": 6,
+      "scientific_name": "Bombus rufocinctus",
+      "taxon_id": 144011
+    },
+    {
+      "activity_score": 12.0,
+      "common_name": "Ligated Furrow Bee",
+      "peak_month": 8,
+      "scientific_name": "Halictus ligatus",
+      "taxon_id": 154298
+    },
+    {
+      "activity_score": 28.0,
+      "common_name": "Western Leafcutter Bee",
+      "peak_month": 8,
+      "scientific_name": "Megachile perihirta",
+      "taxon_id": 224501
+    },
+    {
+      "activity_score": 19.0,
+      "common_name": "Valley Carpenter Bee",
+      "peak_month": 5,
+      "scientific_name": "Xylocopa sonorina",
+      "taxon_id": 244216
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Kincaid's Sweat Bee",
+      "peak_month": 4,
+      "scientific_name": "Lasioglossum kincaidii",
+      "taxon_id": 271509
+    },
+    {
+      "activity_score": 3.0,
+      "common_name": "Spotted Woolcarder",
+      "peak_month": 5,
+      "scientific_name": "Anthidium maculosum",
+      "taxon_id": 308703
+    },
+    {
+      "activity_score": 3.0,
+      "common_name": "Short Sun-digger Bee",
+      "peak_month": 9,
+      "scientific_name": "Anthophora curta",
+      "taxon_id": 308948
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Titus's Sweat Bee",
+      "peak_month": 5,
+      "scientific_name": "Lasioglossum titusi",
+      "taxon_id": 309077
+    }
+  ],
+  "meta": {
+    "absolute_activity": true,
+    "candidate_cap": 800,
+    "candidate_count": 83,
+    "count": 25,
+    "defaulted_dates": true,
+    "end_date": "2025-10-17",
+    "lat": 37.7749,
+    "lon": -122.4194,
+    "months": [
+      9,
+      10
+    ],
+    "radius_km": 25.0,
+    "require_research_grade": true,
+    "sort": "taxon_id",
+    "start_date": "2025-09-17"
+  }
+}

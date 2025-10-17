@@ -1,0 +1,17 @@
+{
+  "count": 1,
+  "data": [
+    {
+      "common_name": "Western Honey Bee",
+      "peak_month": 4,
+      "peak_month_all": 4,
+      "rank": "species",
+      "scientific_name": "Apis mellifera",
+      "score": 0.0607927106320858,
+      "taxon_id": 47219,
+      "total_observations": 6550,
+      "total_observations_all": 6556
+    }
+  ],
+  "query": "apis"
+}

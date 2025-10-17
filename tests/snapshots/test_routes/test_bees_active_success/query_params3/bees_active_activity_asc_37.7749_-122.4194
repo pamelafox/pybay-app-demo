@@ -1,0 +1,197 @@
+{
+  "data": [
+    {
+      "activity_score": 1.0,
+      "common_name": "Peacock Sweat Bee",
+      "peak_month": 3,
+      "scientific_name": "Lasioglossum pavonotus",
+      "taxon_id": 1453119
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Sunflower Chimney Bee",
+      "peak_month": 6,
+      "scientific_name": "Diadasia enavata",
+      "taxon_id": 135310
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": null,
+      "peak_month": 6,
+      "scientific_name": "Micranthophora",
+      "taxon_id": 853185
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Eight-toothed Cuckoo Leaf-cutter Bee",
+      "peak_month": 7,
+      "scientific_name": "Coelioxys octodentatus",
+      "taxon_id": 934230
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Blood Bees",
+      "peak_month": 4,
+      "scientific_name": "Sphecodes",
+      "taxon_id": 61891
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Tansy Mustard Sweat Bee",
+      "peak_month": 7,
+      "scientific_name": "Lasioglossum sisymbrii",
+      "taxon_id": 222681
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "California Digger Bee",
+      "peak_month": 5,
+      "scientific_name": "Anthophora californica",
+      "taxon_id": 308726
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Slevin's Cellophane Bee",
+      "peak_month": 10,
+      "scientific_name": "Colletes slevini",
+      "taxon_id": 179704
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Agile Longhorn Bee",
+      "peak_month": 9,
+      "scientific_name": "Melissodes agilis",
+      "taxon_id": 52780
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Alfalfa Leafcutter Bee",
+      "peak_month": 6,
+      "scientific_name": "Megachile rotundata",
+      "taxon_id": 52783
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Common Longhorn Bee",
+      "peak_month": 7,
+      "scientific_name": "Melissodes communis",
+      "taxon_id": 224858
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Red-belted Bumble Bee",
+      "peak_month": 6,
+      "scientific_name": "Bombus rufocinctus",
+      "taxon_id": 144011
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": null,
+      "peak_month": 5,
+      "scientific_name": "Hylaeus",
+      "taxon_id": 602834
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": null,
+      "peak_month": 5,
+      "scientific_name": "Neochelostoma",
+      "taxon_id": 1091324
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": null,
+      "peak_month": 7,
+      "scientific_name": "Xanthosarus",
+      "taxon_id": 471829
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": null,
+      "peak_month": 4,
+      "scientific_name": "Lasioglossum",
+      "taxon_id": 569269
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Suave Nomad Bee",
+      "peak_month": 8,
+      "scientific_name": "Nomada suavis",
+      "taxon_id": 1426470
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Cellophane-cuckoo Bees",
+      "peak_month": 8,
+      "scientific_name": "Epeolus",
+      "taxon_id": 154666
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Wide-striped Sweat Bee",
+      "peak_month": 6,
+      "scientific_name": "Halictus farinosus",
+      "taxon_id": 318550
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": null,
+      "peak_month": 7,
+      "scientific_name": "Eumelissodes",
+      "taxon_id": 563472
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Wool Carder Bees",
+      "peak_month": 5,
+      "scientific_name": "Anthidium",
+      "taxon_id": 57671
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Western Carpenter Bee",
+      "peak_month": 5,
+      "scientific_name": "Xylocopa californica",
+      "taxon_id": 57688
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": null,
+      "peak_month": 5,
+      "scientific_name": "Megachilinae",
+      "taxon_id": 314114
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Carpenter Bees",
+      "peak_month": 4,
+      "scientific_name": "Xylocopinae",
+      "taxon_id": 244505
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Titus's Sweat Bee",
+      "peak_month": 5,
+      "scientific_name": "Lasioglossum titusi",
+      "taxon_id": 309077
+    }
+  ],
+  "meta": {
+    "absolute_activity": true,
+    "candidate_cap": 800,
+    "candidate_count": 83,
+    "count": 25,
+    "defaulted_dates": true,
+    "end_date": "2025-10-17",
+    "lat": 37.7749,
+    "lon": -122.4194,
+    "months": [
+      9,
+      10
+    ],
+    "radius_km": 25.0,
+    "require_research_grade": false,
+    "sort": "activity_asc",
+    "start_date": "2025-09-17"
+  }
+}

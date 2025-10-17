@@ -1,0 +1,197 @@
+{
+  "data": [
+    {
+      "activity_score": 1.0,
+      "common_name": "Peacock Sweat Bee",
+      "peak_month": 3,
+      "scientific_name": "Lasioglossum pavonotus",
+      "taxon_id": 1453119
+    },
+    {
+      "activity_score": 1195.0,
+      "common_name": "Western Honey Bee",
+      "peak_month": 4,
+      "scientific_name": "Apis mellifera",
+      "taxon_id": 47219
+    },
+    {
+      "activity_score": 73.0,
+      "common_name": "Black-tailed Bumble Bee",
+      "peak_month": 4,
+      "scientific_name": "Bombus melanopygus",
+      "taxon_id": 130222
+    },
+    {
+      "activity_score": 48.0,
+      "common_name": "Foothill Carpenter Bee",
+      "peak_month": 4,
+      "scientific_name": "Xylocopa tabaniformis orpifex",
+      "taxon_id": 70000
+    },
+    {
+      "activity_score": 39.0,
+      "common_name": "Horse-fly Carpenter Bee",
+      "peak_month": 4,
+      "scientific_name": "Xylocopa tabaniformis",
+      "taxon_id": 57686
+    },
+    {
+      "activity_score": 11.0,
+      "common_name": "Nomad Bees",
+      "peak_month": 4,
+      "scientific_name": "Nomada",
+      "taxon_id": 53648
+    },
+    {
+      "activity_score": 9.0,
+      "common_name": "Common Digger Bees",
+      "peak_month": 4,
+      "scientific_name": "Anthophora",
+      "taxon_id": 57682
+    },
+    {
+      "activity_score": 2.0,
+      "common_name": "Carpenter Bees",
+      "peak_month": 4,
+      "scientific_name": "Xylocopinae",
+      "taxon_id": 244505
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": "Blood Bees",
+      "peak_month": 4,
+      "scientific_name": "Sphecodes",
+      "taxon_id": 61891
+    },
+    {
+      "activity_score": 1.0,
+      "common_name": null,
+      "peak_month": 4,
+      "scientific_name": "Lasioglossum",
+      "taxon_id": 569269
+    },
+    {
+      "activity_score": 221.0,
+      "common_name": "Yellow-faced Bumble Bee",
+      "peak_month": 5,
+      "scientific_name": "Bombus vosnesenskii",
+      "taxon_id": 57689
+    },
+    {
+      "activity_score": 197.0,
+      "common_name": null,
+      "peak_month": 5,
+      "scientific_name": "Pyrobombus",
+      "taxon_id": 538900
+    },
+    {
+      "activity_score": 69.0,
+      "common_name": "European Woolcarder Bee",
+      "peak_month": 5,
+      "scientific_name": "Anthidium manicatum",
+      "taxon_id": 62453
+    },
+    {
+      "activity_score": 68.0,
+      "common_name": "Bees",
+      "peak_month": 5,
+      "scientific_name": "Anthophila",
+      "taxon_id": 630955
+    },
+    {
+      "activity_score": 50.0,
+      "common_name": "Masked Bees",
+      "peak_month": 5,
+      "scientific_name": "Hylaeus",
+      "taxon_id": 127812
+    },
+    {
+      "activity_score": 47.0,
+      "common_name": "Bumble Bees",
+      "peak_month": 5,
+      "scientific_name": "Bombus",
+      "taxon_id": 52775
+    },
+    {
+      "activity_score": 45.0,
+      "common_name": null,
+      "peak_month": 5,
+      "scientific_name": "Lasioglossum",
+      "taxon_id": 57678
+    },
+    {
+      "activity_score": 33.0,
+      "common_name": "Large Carpenter Bees",
+      "peak_month": 5,
+      "scientific_name": "Xylocopa",
+      "taxon_id": 51111
+    },
+    {
+      "activity_score": 24.0,
+      "common_name": "Valley Carpenter Bee",
+      "peak_month": 5,
+      "scientific_name": "Xylocopa sonorina",
+      "taxon_id": 244216
+    },
+    {
+      "activity_score": 18.0,
+      "common_name": "Small Carpenter Bees",
+      "peak_month": 5,
+      "scientific_name": "Ceratina",
+      "taxon_id": 155108
+    },
+    {
+      "activity_score": 13.0,
+      "common_name": "Sweat and Furrow bees",
+      "peak_month": 5,
+      "scientific_name": "Halictinae",
+      "taxon_id": 134106
+    },
+    {
+      "activity_score": 9.0,
+      "common_name": "Honey Bees, Bumble Bees, and Allies",
+      "peak_month": 5,
+      "scientific_name": "Apidae",
+      "taxon_id": 47221
+    },
+    {
+      "activity_score": 6.0,
+      "common_name": null,
+      "peak_month": 5,
+      "scientific_name": "Halictina",
+      "taxon_id": 1597678
+    },
+    {
+      "activity_score": 5.0,
+      "common_name": null,
+      "peak_month": 5,
+      "scientific_name": "Ceratina acantha",
+      "taxon_id": 309461
+    },
+    {
+      "activity_score": 4.0,
+      "common_name": "Punctate Masked Bee",
+      "peak_month": 5,
+      "scientific_name": "Hylaeus punctatus",
+      "taxon_id": 459075
+    }
+  ],
+  "meta": {
+    "absolute_activity": true,
+    "candidate_cap": 800,
+    "candidate_count": 83,
+    "count": 25,
+    "defaulted_dates": true,
+    "end_date": "2025-10-17",
+    "lat": 37.7749,
+    "lon": -122.4194,
+    "months": [
+      9,
+      10
+    ],
+    "radius_km": 25.0,
+    "require_research_grade": false,
+    "sort": "peak_month",
+    "start_date": "2025-09-17"
+  }
+}

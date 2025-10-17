@@ -1,0 +1,116 @@
+{
+  "count": 10,
+  "data": [
+    {
+      "common_name": "Honey-tailed Striped Sweat Bee",
+      "peak_month": null,
+      "peak_month_all": 8,
+      "rank": "species",
+      "scientific_name": "Agapostemon melliventris",
+      "score": 0.0607927106320858,
+      "taxon_id": 50087,
+      "total_observations": null,
+      "total_observations_all": 1
+    },
+    {
+      "common_name": "Fine striped sweat bee",
+      "peak_month": 7,
+      "peak_month_all": 7,
+      "rank": "species",
+      "scientific_name": "Agapostemon subtilior",
+      "score": 0.0607927106320858,
+      "taxon_id": 1581467,
+      "total_observations": 288,
+      "total_observations_all": 1108
+    },
+    {
+      "common_name": "Golden-haired Miner Bee",
+      "peak_month": 4,
+      "peak_month_all": 5,
+      "rank": "species",
+      "scientific_name": "Andrena auricoma",
+      "score": 0.0607927106320858,
+      "taxon_id": 361386,
+      "total_observations": 15,
+      "total_observations_all": 77
+    },
+    {
+      "common_name": "Cherry Plum Mining Bee",
+      "peak_month": 2,
+      "peak_month_all": 2,
+      "rank": "species",
+      "scientific_name": "Andrena cerasifolii",
+      "score": 0.0607927106320858,
+      "taxon_id": 346238,
+      "total_observations": 5,
+      "total_observations_all": 10
+    },
+    {
+      "common_name": "Hawthorn Mining Bee",
+      "peak_month": null,
+      "peak_month_all": 5,
+      "rank": "species",
+      "scientific_name": "Andrena crataegi",
+      "score": 0.0607927106320858,
+      "taxon_id": 199011,
+      "total_observations": null,
+      "total_observations_all": 1
+    },
+    {
+      "common_name": "Miserable Mining Bee",
+      "peak_month": 4,
+      "peak_month_all": 3,
+      "rank": "species",
+      "scientific_name": "Andrena miserabilis",
+      "score": 0.0607927106320858,
+      "taxon_id": 198979,
+      "total_observations": 3,
+      "total_observations_all": 10
+    },
+    {
+      "common_name": "Nason's Mining Bee",
+      "peak_month": null,
+      "peak_month_all": 4,
+      "rank": "species",
+      "scientific_name": "Andrena nasonii",
+      "score": 0.0607927106320858,
+      "taxon_id": 198977,
+      "total_observations": null,
+      "total_observations_all": 1
+    },
+    {
+      "common_name": "Blue-and-black Mining Bee",
+      "peak_month": 4,
+      "peak_month_all": 4,
+      "rank": "species",
+      "scientific_name": "Andrena nigrocaerulea",
+      "score": 0.0607927106320858,
+      "taxon_id": 345300,
+      "total_observations": 25,
+      "total_observations_all": 32
+    },
+    {
+      "common_name": "Prunus Miner Bee",
+      "peak_month": null,
+      "peak_month_all": 7,
+      "rank": "species",
+      "scientific_name": "Andrena prunorum",
+      "score": 0.0607927106320858,
+      "taxon_id": 57667,
+      "total_observations": null,
+      "total_observations_all": 1
+    },
+    {
+      "common_name": "European Woolcarder Bee",
+      "peak_month": 5,
+      "peak_month_all": 5,
+      "rank": "species",
+      "scientific_name": "Anthidium manicatum",
+      "score": 0.0607927106320858,
+      "taxon_id": 62453,
+      "total_observations": 498,
+      "total_observations_all": 529
+    }
+  ],
+  "query": "bee"
+}

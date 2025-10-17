@@ -1,0 +1,126 @@
+{
+  "data": [
+    {
+      "activity_score": 1.0,
+      "common_name": "Slevin's Cellophane Bee",
+      "peak_month": 10,
+      "scientific_name": "Colletes slevini",
+      "taxon_id": 179704
+    },
+    {
+      "activity_score": 0.3333,
+      "common_name": null,
+      "peak_month": 5,
+      "scientific_name": "Neochelostoma",
+      "taxon_id": 1091324
+    },
+    {
+      "activity_score": 0.2,
+      "common_name": "Spotted Woolcarder",
+      "peak_month": 5,
+      "scientific_name": "Anthidium maculosum",
+      "taxon_id": 308703
+    },
+    {
+      "activity_score": 0.125,
+      "common_name": null,
+      "peak_month": 9,
+      "scientific_name": "Megachile apicalis",
+      "taxon_id": 335714
+    },
+    {
+      "activity_score": 0.0984,
+      "common_name": null,
+      "peak_month": 7,
+      "scientific_name": "Agapostemon",
+      "taxon_id": 606634
+    },
+    {
+      "activity_score": 0.0952,
+      "common_name": null,
+      "peak_month": 8,
+      "scientific_name": "Megachile fidelis",
+      "taxon_id": 309381
+    },
+    {
+      "activity_score": 0.0909,
+      "common_name": "Patchwork Leafcutter Bee",
+      "peak_month": 8,
+      "scientific_name": "Megachile centuncularis",
+      "taxon_id": 124406
+    },
+    {
+      "activity_score": 0.0833,
+      "common_name": null,
+      "peak_month": 5,
+      "scientific_name": "Hylaeus",
+      "taxon_id": 602834
+    },
+    {
+      "activity_score": 0.0683,
+      "common_name": "Western Honey Bee",
+      "peak_month": 4,
+      "scientific_name": "Apis mellifera",
+      "taxon_id": 47219
+    },
+    {
+      "activity_score": 0.0667,
+      "common_name": "Oblong Woolcarder Bee",
+      "peak_month": 5,
+      "scientific_name": "Anthidium oblongatum",
+      "taxon_id": 125792
+    },
+    {
+      "activity_score": 0.0606,
+      "common_name": null,
+      "peak_month": 5,
+      "scientific_name": "Ceratina acantha",
+      "taxon_id": 309461
+    },
+    {
+      "activity_score": 0.0597,
+      "common_name": "Sweat and Furrow bees",
+      "peak_month": 5,
+      "scientific_name": "Halictinae",
+      "taxon_id": 134106
+    },
+    {
+      "activity_score": 0.0556,
+      "common_name": null,
+      "peak_month": 6,
+      "scientific_name": "Lasioglossum gemmatum",
+      "taxon_id": 1450287
+    },
+    {
+      "activity_score": 0.0526,
+      "common_name": "Honey Bees, Bumble Bees, and Allies",
+      "peak_month": 5,
+      "scientific_name": "Apidae",
+      "taxon_id": 47221
+    },
+    {
+      "activity_score": 0.0526,
+      "common_name": "Sharptail Bees",
+      "peak_month": 9,
+      "scientific_name": "Coelioxys",
+      "taxon_id": 199145
+    }
+  ],
+  "meta": {
+    "absolute_activity": false,
+    "candidate_cap": 800,
+    "candidate_count": 48,
+    "count": 15,
+    "defaulted_dates": false,
+    "end_date": "2025-10-17",
+    "lat": 37.7749,
+    "lon": -122.4194,
+    "months": [
+      10
+    ],
+    "radius_km": 25.0,
+    "require_research_grade": false,
+    "sort": "activity_desc",
+    "start_date": "2025-10-12"
+  }
+}
