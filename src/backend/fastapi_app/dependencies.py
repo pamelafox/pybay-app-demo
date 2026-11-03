@@ -1,7 +1,7 @@
 import logging
 import os
 from collections.abc import AsyncGenerator
-from typing import Annotated, Union
+from typing import Annotated
 
 import azure.identity
 from fastapi import Depends, Request
@@ -10,10 +10,10 @@ from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker
 logger = logging.getLogger("ragapp")
 
 
-async def get_azure_credential() -> Union[
-    azure.identity.AzureDeveloperCliCredential, azure.identity.ManagedIdentityCredential
-]:
-    azure_credential: Union[azure.identity.AzureDeveloperCliCredential, azure.identity.ManagedIdentityCredential]
+async def get_azure_credential() -> (
+    azure.identity.AzureDeveloperCliCredential | azure.identity.ManagedIdentityCredential
+):
+    azure_credential: azure.identity.AzureDeveloperCliCredential | azure.identity.ManagedIdentityCredential
     try:
         if client_id := os.getenv("APP_IDENTITY_ID"):
             # Authenticate using a user-assigned managed identity on Azure
